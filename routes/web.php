@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FakultasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,21 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/fakultas', function(){
-    return view('fakultas');
+// Route::get('/fakultas', function(){
+//     return view('fakultas');
 
-});
+// });
 
-Route::get('/prodi', function(){
+Route::resource('fakultas', FakultasController::class);
+
+Route::get('/prodi', function () {
     return view('prodi');
-
 });
 
-Route::get('/mahasiswa', function(){
+Route::get('/mahasiswa', function () {
     $data = [
         ["npm" => 2226250068, "nama" => " Maman"],
         ["npm" => 2226250069, "nama" => " Pepeng"],
     ];
-    return view('mahasiswa.index')->with('mahasiswa',$data);
-
+    return view('mahasiswa.index')->with('mahasiswa', $data);
 });
