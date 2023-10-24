@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProdiController;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,15 +27,17 @@ Route::get('/', function () {
 // });
 
 Route::resource('fakultas', FakultasController::class);
+Route::resource('prodi', ProdiController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
 
-Route::get('/prodi', function () {
-    return view('prodi');
-});
+// Route::get('/prodi', function () {
+//     return view('prodi');
+// });
 
-Route::get('/mahasiswa', function () {
-    $data = [
-        ["npm" => 2226250068, "nama" => " Maman"],
-        ["npm" => 2226250069, "nama" => " Pepeng"],
-    ];
-    return view('mahasiswa.index')->with('mahasiswa', $data);
-});
+// Route::get('/mahasiswa', function () {
+//     $data = [
+//         ["npm" => 2226250068, "nama" => " Maman"],
+//         ["npm" => 2226250069, "nama" => " Pepeng"],
+//     ];
+//     return view('mahasiswa.index')->with('mahasiswa', $data);
+// });
