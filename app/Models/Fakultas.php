@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fakultas extends Model
 {
-    use HasFactory;
+    use HasFactory, Hassuuids;
 }
