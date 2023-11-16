@@ -6,9 +6,9 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Fakultas</h4>
+                    <h4 class="card-title">Tambah Mahasiswa</h4>
                     <p class="card-description">
-                        Daftar Mahasiswa Universitas Multi Data Palembang
+                        Formulir tambah mahasiswa
 
                     </p>
                     <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary btn-rounded btn-fw">Tambah</a>
