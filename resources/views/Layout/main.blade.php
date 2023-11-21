@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>@yield('title')</title>
+  <title>fakultas</title>
   <!-- base:css -->
   <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
@@ -15,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
@@ -28,26 +29,29 @@
           <span></span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('fakultas') }}">
-            <i class="mdi mdi-home-modern menu-icon"></i>
-            <span class="menu-title">Fakultas</span>
+          <a class="nav-link" href="index.html">
+            <i class="mdi mdi-bowling menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item sidebar-category">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('prodi') }}">
-            <i class="mdi mdi-account-circle menu-icon"></i>
-            <span class="menu-title">Prodi</span>
+         <li class="nav-item">
+          <a class="nav-link" href="{{url('fakultas')}}">
+            <i class="mdi mdi-bulldozer menu-icon"></i>
+            <span class="menu-title">fakultas</span>
           </a>
         </li>
-        <li class="nav-item sidebar-category">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('mahasiswa') }}">
-            <i class="mdi mdi-view-quilt menu-icon"></i>
-            <span class="menu-title">Mahasiswa</span>
+         <li class="nav-item">
+          <a class="nav-link" href="{{url('prodi')}}">
+            <i class="mdi mdi-cash-usd menu-icon"></i>
+            <span class="menu-title">program studi</span>
           </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{url('mahasiswa')}}">
+            <i class="mdi mdi-clock menu-icon"></i>
+            <span class="menu-title">mahasiswa</span>
+          </a>
+        </li>
         <li class="nav-item sidebar-category">
           <p>Components</p>
           <span></span>
@@ -66,25 +70,25 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ asset('pages/forms/basic_elements.html') }}">
+          <a class="nav-link" href="pages/forms/basic_elements.html">
             <i class="mdi mdi-view-headline menu-icon"></i>
             <span class="menu-title">Form elements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ asset ('pages/charts/chartjs.html') }}">
+          <a class="nav-link" href="pages/charts/chartjs.html">
             <i class="mdi mdi-chart-pie menu-icon"></i>
             <span class="menu-title">Charts</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ asset('pages/tables/basic-table.html') }}">
+          <a class="nav-link" href="pages/tables/basic-table.html">
             <i class="mdi mdi-grid-large menu-icon"></i>
             <span class="menu-title">Tables</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ ('pages/icons/mdi.html') }}">
+          <a class="nav-link" href="pages/icons/mdi.html">
             <i class="mdi mdi-emoticon menu-icon"></i>
             <span class="menu-title">Icons</span>
           </a>
@@ -101,11 +105,11 @@
           </a>
           <div class="collapse" id="auth">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ asset('pages/samples/login.html') }}"> Login </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ asset('pages/samples/login-2.html') }}"> Login 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ asset('pages/samples/register.html') }}"> Register </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ asset ('pages/samples/register-2.html') }}"> Register 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{ asset('pages/samples/lock-screen.html') }}"> Lockscreen </a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
             </ul>
           </div>
         </li>
@@ -135,8 +139,8 @@
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('images/logo.svg') }}" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
           </div>
           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
           <ul class="navbar-nav navbar-nav-right">
@@ -152,7 +156,7 @@
                 <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ asset('images/faces/face4.jpg') }}" alt="image" class="profile-pic">
+                      <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -164,7 +168,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ asset('images/faces/face2.jpg') }}" alt="image" class="profile-pic">
+                      <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
@@ -176,7 +180,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ asset('images/faces/face3.jpg') }}" alt="image" class="profile-pic">
+                      <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
@@ -252,7 +256,7 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="{{ asset('images/faces/face5.jpg') }}" alt="profile"/>
+                <img src="images/faces/face5.jpg" alt="profile"/>
                 <span class="nav-profile-name">Eleanor Richardson</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -287,8 +291,8 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          @yield('content')
-</div>
+            b.@yield('content')
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:./partials/_footer.html -->
         <footer class="footer">
@@ -311,22 +315,23 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+  <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="vendors/chart.js/Chart.min.js"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="{{ asset('js/off-canvas.js') }}"></script>
-  <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
-  <script src="{{ asset('js/template.js') }}"></script>
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
   <!-- endinject -->
   <!-- plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
-  <script src="{{ asset('js/dashboard.js') }}"></script>
+  <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  @yield('scripts')
 </body>
 
 </html>

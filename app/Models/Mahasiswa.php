@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     use HasFactory, HasUuids;
-    protected $table = 'mahasiswa';
+    protected $table = 'mahasiswas';
 }

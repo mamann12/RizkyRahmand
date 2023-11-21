@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fakultas;
+use App\Models\fakultas;
 use Illuminate\Http\Request;
 
 class FakultasController extends Controller
@@ -12,10 +12,8 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        $fakultas = Fakultas::all(); {
-            $$fakultas = Fakultas::all();
-            return view("fakultas.index")->with("fakultas", $fakultas);
-        }
+        $fakultas = fakultas::all();
+        return view("fakultas.index")->with("fakultas", $fakultas);
     }
 
     /**
@@ -23,7 +21,7 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        //
+        return view("fakultas.create");
     }
 
     /**
@@ -31,23 +29,22 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+       // dd($request);
 
-        //validasi data input
+       // validasi data input
         $validasi = $request->validate([
-            "nama" => "required|unique:fakultas"
+            "name" => "required|unique:fakultas"
         ]);
+       //simpan data ke tabel fakultas  
+       Fakultas::create($validasi);
 
-        //Simpan data ke table fakultas
-        Fakultas::create($validasi);
-
-        return redirect("fakultas/index")->with("succes", "Data fakultas berhasil disimpan");
+       return redirect("fakultas")->with("success", "Data fakultas berhasil disimpan");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show(fakultas $fakultas)
     {
         //
     }
@@ -55,7 +52,7 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit(fakultas $fakultas)
     {
         //
     }
@@ -63,15 +60,21 @@ class FakultasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, $id)
     {
-        //
+        $validasi = $request->validate([
+            "nama"=>
+            'required'
+        ]);
+        Fakultas::find($id)->update($validasi);
+
+        return redirect ('fakultas')->with('Data fakultas berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy(fakultas $fakultas)
     {
         //
     }

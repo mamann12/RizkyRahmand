@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
-use Illuminate\Http\RedirectResponse;
+use App\Models\mahasiswa;
+use App\Models\prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -22,7 +22,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+         return view("mahasiswa.create");
     }
 
     /**
@@ -30,33 +30,31 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+         // validasi data input
         $validasi = $request->validate([
-            "npm" => "required|unique::mahasiswas",
-            "nama" => "required",
-            "tempat_lahir" =>"required",
-            "tanggal_lahir"=>"required",
-            "prodi_id"=>"required",
-            "foto"=> "required|image"
+            "npm" => "required|unique:mahasiswa",
+            "name" => "required",
+            "tempat_lahir" => "required",
+            "tanggal_lahir" => "required",
+            "prodi_id" => "required",
+            "foto" => "required|image"
         ]);
-    // ambil extensi file foto
-    $ext = $request->foto->getClientOriginalExtension();
-    // rename file foto menjadi npm.extensi (contoh: 2226250068.jpg)
-    $validasi["foto"] = $request->npm.".".$ext;
-    // upload file foto ke dalam folder public /foto
-    $request->foto->move(public_path('foto'), $validasi["foto"]);
-    // simpan data mahasiswa ke table mahasiswas
-    Mahasiswa::create($validasi);
-    return Redirect("mahasiswa")->with("success","Data mahasiswa berhasil disimpan");
+        //ambil extensi file foto
+        $ext = $request->foto->getclientOriginalExtension();
+        //rename file foto menjadi npm.extensi (contoh: 2226250077.jpg)
+        $validasi["foto"] = $request->npm.".".$ext;
+        //upload file foto ke dalam folder public/foto
+        $request->foto->move(public_path('foto'),$validasi["foto"]);
+       //simpan data mahasiswa ke tabel mahasiswas
+       Mahasiswa::create($validasi);
+
+       return redirect("mahasiswa")->with("success", "Data fakultas berhasil disimpan");
     }
-
-
-
-    //
 
     /**
      * Display the specified resource.
      */
-    public function show(Mahasiswa $mahasiswa)
+    public function show(mahasiswa $mahasiswa)
     {
         //
     }
@@ -64,15 +62,16 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mahasiswa $mahasiswa)
+    public function edit(mahasiswa $mahasiswa)
     {
-        //
+        $prodi = prodi::all();
+        return view("mahasiswa.edit")->with("mahasiswa", $mahasiswa)->with("prodi", $prodi);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, mahasiswa $mahasiswa)
     {
         //
     }
@@ -80,9 +79,9 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy(mahasiswa $mahasiswa)
     {
         $mahasiswa -> delete();
-        return redirect()->route("mahasiswa.index")->with("success","Berhasil dihapus");
+        return redirect()->route("mahasiswa.index")->with("success","berhasil dihapus");
     }
 }

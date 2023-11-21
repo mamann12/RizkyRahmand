@@ -1,70 +1,59 @@
-@extends('layout.main')
-@section('title', 'Index')
+@extends ('layout.main')
+@section ('title','mahasiswa')
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
+@section ('content')
+    <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Tambah Mahasiswa</h4>
-                    <p class="card-description">
-                        Formulir tambah mahasiswa
-
-                    </p>
-                    <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary btn-rounded btn-fw">Tambah</a>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>NPM</th>
-                                    <th>Nama</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Foto</th>
-                                    <th>Nama Prodi</th>
-                                    <th>Nama Fakultas</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($mahasiswa as $item)
-                                    <tr>
-                                        <td>{{ $item['npm'] }}</td>
-                                        <td>{{ $item['nama'] }}</td>
-                                        <td>{{ $item['tempat_lahir'] }}</td>
-                                        <td>{{ $item['tanggal_lahir'] }}</td>
-                                        <td><img src="foto/{{ $item['foto'] }}" class="rounded-circle" width="70px" />
-                                        </td>
-                                        <td>{{ $item['prodi']['nama'] }}</td>
-                                        <td>{{ $item['prodi']['fakultas']['nama'] }}</td>
-                                        <td>
-                                            <div class='d-flex justify-content-center'>
-                                                <a href="{{ route('mahasiswa.edit', $item->id)}}">
-                                                    <button class="btn btn-success btn-sm">edit</button>
-                                                </a>
-                                                <form method="post" action="{{ route('mahasiswa.destroy', $item->id) }}">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                  <h4 class="card-title">Edit mahasiswa</h4>
+                  <p class="card-description">
+                    Formulir edit mahasiwa
+                  </p>
+                  <form class="forms-sample" method="POST" action="{{ route('mahasiswa.update', $mahasiswa->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <div class="form-group">
+                      <label for="name">Nomor Pokok Mahasiswa</label>
+                      <input type="text" class="form-control" name="name" placeholder="Nomor Pokok Mahasiswa" value="{{ $mahasiswa->name }}">
+                      @error('name')
+                        <label class="text-danger">{{ $messege }}</label>
+                      @enderror
                     </div>
+                    <div class="form-group">
+                      <label for="name">Nama Mahasiswa</label>
+                      <input type="text" class="form-control" name="name" placeholder="Nama Mahasiswa" value="{{ $mahasiswa->name }}">
+                      @error('name')
+                        <label class="text-danger">{{ $messege }}</label>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Tempat Lahir</label>
+                      <input type="text" class="form-control" name="name" placeholder="Tempat lahir" value="{{ $mahasiswa->tempat_lahir}}">
+                      @error('name')
+                        <label class="text-danger">{{ $messege }}</label>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Tanggal lahir</label>
+                      <input type="date" class="form-control" name="name" placeholder="Tanggal Lahir" value="{{ $mahasiswa->tanggal_lahir}}">
+                      @error('name')
+                        <label class="text-danger">{{ $messege }}</label>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="foto">upload foto</label>
+                      <input type="file" class="form-control" name="foto" placeholder="foto">
+                    </div>
+                    <div class="form-group">
+                        <label for="prodi_id"></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                    <a href="{{ url('fakultas') }}"class="btn btn-light">Batal</a>
+                  </form>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-
 @endsection
-@section('script')
-    <script>
-       @if (Session::get('success'))
-            toastr.success("{{ Session::get('success')}}")
-       @endif
-    </script>
 
-@endsection
+

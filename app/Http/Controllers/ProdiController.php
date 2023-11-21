@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fakultas;
+use App\Models\fakultas;
 use App\Models\prodi;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class ProdiController extends Controller
     public function index()
     {
         $prodi = prodi::all();
-        return view("prodi.index")->with("prodi", $prodi);
+        return view("prodi.index")->with("prodi",$prodi);
     }
 
     /**
@@ -22,8 +22,8 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        $fakultas = Fakultas::all();
-        return view("prodi.create")->with("fakultas",$fakultas);
+        $fakultas = fakultas::all();
+        return view("prodi.create")->with("fakultas", $fakultas);
     }
 
     /**
@@ -31,15 +31,14 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
+         $validasi = $request->validate([
             "nama" => "required|unique:prodis",
             "fakultas_id" => "required"
         ]);
 
-        Prodi::create($validasi);
-        return redirect("prodi")->with("succses","Data Prodi berhasil disimpan");
+        prodi::create($validasi);
+        return redirect("prodi")->with("success","data prodi berhasil di simpan");
     }
-
 
     /**
      * Display the specified resource.
@@ -62,7 +61,15 @@ class ProdiController extends Controller
      */
     public function update(Request $request, prodi $prodi)
     {
-        //
+        $validasi = $request->validate([
+            "nama" => "required",
+            "fakultas_id" => "required"
+        ]);
+
+        $prodi ->update($validasi);
+        // atau pakai cara dibawah ini 
+        // Prodi:: where('id',$prodi->id)->update($validasi);
+        return redirect("prodi")-with("success","Data Prodi berhasil diubah");
     }
 
     /**
